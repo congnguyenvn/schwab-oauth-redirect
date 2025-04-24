@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head><title>Redirecting...</title></head>
+  <body>
+    <script>
+      const params = new URLSearchParams(window.location.search);
+      const code = params.get("code");
+      const error = params.get("error");
+
+      const redirectUrl = error
+        ? `myapp://auth?error=${encodeURIComponent(error)}`
+        : `myapp://auth?code=${encodeURIComponent(code)}`;
+
+      window.location.href = redirectUrl;
+    </script>
+  </body>
+</html>
